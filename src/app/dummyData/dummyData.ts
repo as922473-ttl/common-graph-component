@@ -1,5 +1,5 @@
 export const graphData = {
-
+//monthly Data
     dataset1: {
         y: [
             [
@@ -132,7 +132,7 @@ export const graphData = {
             "2022-06-30 06:30:00"
         ]
     },
-
+//monthly Data
     dataset2: {
         y: [
             [
@@ -265,7 +265,7 @@ export const graphData = {
             "2022-06-30 06:30:00"
         ]
     },
-
+//Daily Data
     dataset3: {
         y: [
             100,
@@ -368,7 +368,7 @@ export const graphData = {
             "2022-06-18 06:30:00"
         ]
     },
-
+//Daily Data
     dataset4: {
         y: [
             10,

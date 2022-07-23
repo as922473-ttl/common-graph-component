@@ -5,3 +5,23 @@ html {
   width: 100%;
   margin: 0 !important;
 }
+
+@font-face {
+  font-family: "montserrat-regular";
+  src: url("assets/fonts/montserrat_regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "montserrat-medium";
+  src: url("assets/fonts/montserrat_medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "montserrat-semibold";
+  src: url("assets/fonts/montserrat_semibold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "montserrat-bold";
+  src: url("assets/fonts/montserrat_bold.ttf") format("truetype");
+}

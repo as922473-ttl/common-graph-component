@@ -1,3 +1,5 @@
+$medium_font: montserrat-medium; 
+
 .backdrop {
   margin-left: -100%;
   background-color: #000;
@@ -38,13 +40,14 @@
 }
 
 .close-button {
+  font-family: $medium_font;
   color: black;
   z-index: 9999;
   text-align: center;
   padding: 5px;
   right: 9px;
   position: absolute;
-  top: 5px;
+  top: -14px;
   font-size: 25px;
   cursor: pointer;
   width: 29px;
@@ -61,16 +64,17 @@
   position: relative;
 }
 .box-head p {
-  padding: 9px;
+  text-align: center;
+  padding: 2px 9px 9px 9px;
   color: black;
   font-family: montserrat-semibold;
   border-bottom: 1px solid #ccc;
   font-size: 0.9vw;
 }
 
-.box-body div p {
+.box-body div {
   text-align: center;
-  // font-family: $medium_font;
+  font-family: $medium_font;
   font-size: 1vw;
   margin-top: 5%;
 }

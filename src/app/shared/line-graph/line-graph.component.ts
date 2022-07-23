@@ -226,7 +226,7 @@ export class LineGraphComponent implements OnInit {
     let day_wise_status = [day_shiftC, day_shiftB, day_shiftA];
 
     let that = this;
-    let modeBarButtonsToAddArray3 = [
+    let modeBarButtonsToAddArray = [
       {
         name: 'Bar chart',
         icon: plotlyicons.icons['barchart'],
@@ -341,12 +341,12 @@ export class LineGraphComponent implements OnInit {
     let dayWiseConfig: any;
     if (this.showBarGraph === 'false') {
       dayWiseConfig = {
-        modeBarButtonsToAdd: [modeBarButtonsToAddArray3[2], modeBarButtonsToAddArray3[3]], //modeBarButtonsToAdd: [modeBarButtonsToAddArray3[2]],
+        modeBarButtonsToAdd: [modeBarButtonsToAddArray[2], modeBarButtonsToAddArray[3]], //modeBarButtonsToAdd: [modeBarButtonsToAddArray[2]],
         displaylogo: false, responsive: true, scrollZoom: true
       }
     } else {
       dayWiseConfig = {
-        modeBarButtonsToAdd: [...modeBarButtonsToAddArray3],
+        modeBarButtonsToAdd: [...modeBarButtonsToAddArray],
         displaylogo: false, responsive: true, scrollZoom: true
       }
     }

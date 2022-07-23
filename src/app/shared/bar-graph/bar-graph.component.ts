@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { isObject } from 'highcharts';
-import { CommonService } from '../../services/common.service';
 import * as plotlyicons from '../plotlyIcons';
 declare let Plotly: any;
 declare let document: any;
@@ -184,7 +183,8 @@ export class BarGraphComponent implements OnInit {
                     that.graphConfig
                   );
                 }, 200);
-              } else {
+              } 
+              else {
                 Plotly.newPlot(that.elementId, gd.data, gd.layout, {
                   displaylogo: false,
                   responsive: true,
@@ -219,7 +219,8 @@ export class BarGraphComponent implements OnInit {
                     that.graphConfig
                   );
                 }, 200);
-              } else {
+              } 
+              else {
                 Plotly.newPlot(
                   that.elementId,
                   gd.data,
@@ -324,7 +325,8 @@ export class BarGraphComponent implements OnInit {
                     that.graphConfig
                   );
                 }, 200);
-              } else {
+              } 
+              else {
                 Plotly.newPlot(that.elementId, gd.data, gd.layout, {
                   displaylogo: false,
                   responsive: true,
