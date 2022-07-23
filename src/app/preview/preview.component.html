@@ -1,0 +1,47 @@
+<div *ngIf="showLoader">
+  <app-loader></app-loader>
+</div>
+<h2 class="heading" style="text-align: 'center'">Common Graph Components</h2>
+
+<h4 style="text-align: 'center';">Stacked Bar Graph</h4>
+<div class="dataset-buttons">
+  <button class="button">Load Dataset 1</button>
+  <button class="button">Load Dataset 2</button>
+</div>
+
+<div class="graph-container">
+  <div id="bar-graph">
+    <app-bar-graph
+      [data]="barGraphData['y']"
+      [date]="barGraphData['x']"
+      elementId="bar-graph"
+      [unit]="graphUnit"
+      filterType="monthly"
+      graphTitle="Total Energy Meter Consumption"
+    >
+    </app-bar-graph>
+  </div>
+</div>
+
+<div class="second-graph-container">
+  <h4 style="text-align: 'center';">Line Graph</h4>
+  <div class="dataset-buttons">
+    <button class="button">Load Dataset 1</button>
+    <button class="button">Load Dataset 2</button>
+  </div>
+
+  <div class="graph-container">
+    <div id="line-graph">
+      <app-line-graph
+        [data]="lineGraphData['y']"
+        [date]="lineGraphData['x']"
+        showBarGraph="false"
+        [unit]="graphUnit"
+        elementId="line-graph"
+        filterType="daily"
+        graphTitle="Total Energy Meter Consumption"
+      >
+      </app-line-graph>
+    </div>
+  </div>
+</div>
