@@ -180,7 +180,6 @@ export class LineGraphComponent implements OnInit {
         y: this.data[2]
       }
     } else if (this.filterType === 'daily') {
-
       let shiftA: any = {}, shiftB: any = {}, shiftC: any = {};
       if (this.data) {
         if (this.data.length > 0 && this.data.length <= 16) {
@@ -226,7 +225,7 @@ export class LineGraphComponent implements OnInit {
     let day_wise_status = [day_shiftC, day_shiftB, day_shiftA];
 
     let that = this;
-    let modeBarButtonsToAddArray = [
+    let modeBarButtonsToAddArray3 = [
       {
         name: 'Bar chart',
         icon: plotlyicons.icons['barchart'],
@@ -236,12 +235,12 @@ export class LineGraphComponent implements OnInit {
           gd.data[1]['type'] = 'bar';
           gd.data[2]['type'] = 'bar';
           gd.layout['height'] = that.heightVal;
-          Plotly.newPlot(that.elementId, gd.data, gd.layout, dayWiseConfig);
+          Plotly.newPlot(that.elementId, gd.data, gd.layout, day_wiseconfig);
           if (that.showFullscreen) {
             setTimeout(() => {
               let layout = gd.layout;
               layout['height'] = null;
-              Plotly.newPlot('fullscreenGraph', gd.data, layout, dayWiseConfig);
+              Plotly.newPlot('fullscreenGraph', gd.data, layout, day_wiseconfig);
             }, 200);
           }
         }
@@ -263,7 +262,7 @@ export class LineGraphComponent implements OnInit {
             setTimeout(() => {
               let layout = gd.layout;
               layout['height'] = null;
-              Plotly.newPlot('fullscreenGraph', gd.data, layout, dayWiseConfig);
+              Plotly.newPlot('fullscreenGraph', gd.data, layout, day_wiseconfig);
             }, 200);
           }
         }
@@ -278,7 +277,7 @@ export class LineGraphComponent implements OnInit {
           if (that.showFullscreen) {
             setTimeout(() => {
               document.getElementById('title-fullscreen').innerHTML = that.graphTitle;
-              Plotly.newPlot('fullscreenGraph', gd.data, gd.layout, dayWiseConfig);
+              Plotly.newPlot('fullscreenGraph', gd.data, gd.layout, day_wiseconfig);
             }, 200);
           }
         }
@@ -291,8 +290,9 @@ export class LineGraphComponent implements OnInit {
           let annotations = [];
           let flag = false;
 
-          if (gd.layout['annotations'] == undefined)
+          if (gd.layout['annotations'] == undefined){
             flag = true;
+          } 
           else {
             flag = false;
             delete gd.layout['annotations'];
@@ -322,15 +322,23 @@ export class LineGraphComponent implements OnInit {
             gd.layout['annotations'] = annotations;
           }
 
-          Plotly.newPlot(that.elementId, gd.data, gd.layout, { displaylogo: false, responsive: true, scrollZoom: true });
+          // Plotly.newPlot(that.elementId, gd.data, gd.layout, { displaylogo: false, responsive: true, scrollZoom: true });
 
           if (that.showFullscreen) {
             setTimeout(() => {
               let layout = gd.layout;
               layout['height'] = null;
-              Plotly.newPlot('fullscreenGraph', gd.data, layout, dayWiseConfig);
+              Plotly.newPlot('fullscreenGraph', gd.data, layout, day_wiseconfig);
               that.service.toggleLoader(false);
             }, 200);
+          } else {
+            setTimeout(() => {
+              let layout = gd.layout;
+              layout['height'] = that.heightVal;
+              Plotly.newPlot(that.elementId, gd.data, layout, day_wiseconfig);
+              that.service.toggleLoader(false);
+            }, 200);
+            
           }
           setTimeout(() => {
             that.service.toggleLoader(false);
@@ -338,15 +346,15 @@ export class LineGraphComponent implements OnInit {
         }
       }
     ];
-    let dayWiseConfig: any;
+    let day_wiseconfig: any;
     if (this.showBarGraph === 'false') {
-      dayWiseConfig = {
-        modeBarButtonsToAdd: [modeBarButtonsToAddArray[2], modeBarButtonsToAddArray[3]], //modeBarButtonsToAdd: [modeBarButtonsToAddArray[2]],
+      day_wiseconfig = {
+        modeBarButtonsToAdd: [modeBarButtonsToAddArray3[2], modeBarButtonsToAddArray3[3]], //modeBarButtonsToAdd: [modeBarButtonsToAddArray3[2]],
         displaylogo: false, responsive: true, scrollZoom: true
       }
     } else {
-      dayWiseConfig = {
-        modeBarButtonsToAdd: [...modeBarButtonsToAddArray],
+      day_wiseconfig = {
+        modeBarButtonsToAdd: [...modeBarButtonsToAddArray3],
         displaylogo: false, responsive: true, scrollZoom: true
       }
     }
@@ -359,7 +367,7 @@ export class LineGraphComponent implements OnInit {
     } else if (this.data.constructor === Object && isObject(this.data, true) && Object.keys(this.data).length === 0) {
       Plotly.newPlot(this.elementId, [], this.noDataLayout, this.graphConfig);
     } else {
-      Plotly.newPlot(this.elementId, day_wise_status, this.graphLayout, dayWiseConfig);
+      Plotly.newPlot(this.elementId, day_wise_status, this.graphLayout, day_wiseconfig);
     }
   }
 }

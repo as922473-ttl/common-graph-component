@@ -314,7 +314,7 @@ export class BarGraphComponent implements OnInit {
                 gd.layout['annotations'] = annotations;
               }
 
-              if (that.showFullscreen) {
+              if (that.showFullscreen) { 
                 setTimeout(() => {
                   let layout = gd.layout;
                   layout['height'] = null;
@@ -327,6 +327,8 @@ export class BarGraphComponent implements OnInit {
                 }, 200);
               } 
               else {
+                let layout = gd.layout;
+                  layout['height'] = that.heightVal;
                 Plotly.newPlot(that.elementId, gd.data, gd.layout, {
                   displaylogo: false,
                   responsive: true,
