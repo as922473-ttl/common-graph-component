@@ -20,6 +20,7 @@ export class LineGraphComponent implements OnInit {
   @Input() unit!: string;
 
   width: any = screen.width;
+  config: any;
   heightVal: any;
   graphConfig: any;
   graphLayout: any;
@@ -37,13 +38,13 @@ export class LineGraphComponent implements OnInit {
     this.renderGraph();
   }
 
-  renderGraph(): void {
+  renderGraph() {
     if (this.width <= 380) {
       this.heightVal = 250;
     } else if (this.width >= 381 && (this.width <= 800)) {
       this.heightVal = 280;
     } else if (this.width >= 1000 && (this.width <= 1800)) {
-      this.heightVal = 250; //this.heightVal = 150;
+      this.heightVal = 180;
     } else {
       this.heightVal = 200;
     }
@@ -286,13 +287,11 @@ export class LineGraphComponent implements OnInit {
         name: 'Text Display/Hide',
         icon: plotlyicons.icons['textshowhide'],
         click: function (gd: any) {
-          that.service.toggleLoader(true);
           let annotations = [];
           let flag = false;
 
-          if (gd.layout['annotations'] == undefined){
+          if (gd.layout['annotations'] == undefined)
             flag = true;
-          } 
           else {
             flag = false;
             delete gd.layout['annotations'];
@@ -328,21 +327,13 @@ export class LineGraphComponent implements OnInit {
             setTimeout(() => {
               let layout = gd.layout;
               layout['height'] = null;
-              Plotly.newPlot('fullscreenGraph', gd.data, layout, day_wiseconfig);
-              that.service.toggleLoader(false);
+              Plotly.newPlot('fullscreenGraph', gd.data, layout); //, this.config
             }, 200);
           } else {
-            setTimeout(() => {
-              let layout = gd.layout;
-              layout['height'] = that.heightVal;
-              Plotly.newPlot(that.elementId, gd.data, layout, day_wiseconfig);
-              that.service.toggleLoader(false);
-            }, 200);
-            
+            let layout = gd.layout;
+            layout['height'] = that.heightVal;
+            Plotly.newPlot(that.elementId, gd.data, gd.layout, { displaylogo: false, responsive: true, scrollZoom: true });
           }
-          setTimeout(() => {
-            that.service.toggleLoader(false);
-          }, 1000);
         }
       }
     ];
