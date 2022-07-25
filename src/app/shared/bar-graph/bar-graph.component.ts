@@ -160,7 +160,7 @@ export class BarGraphComponent implements OnInit {
             name: 'Bar chart',
             icon: plotlyicons.icons['barchart'],
             direction: 'up',
-            click: function (gd:any) {
+            click: function (gd: any) {
               gd.data[0]['type'] = 'bar';
               gd.data[1]['type'] = 'bar';
               gd.data[2]['type'] = 'bar';
@@ -171,7 +171,7 @@ export class BarGraphComponent implements OnInit {
 
               gd.layout['barmode'] = 'stack';
               gd.layout['height'] = that.heightVal;
-
+              Plotly.newPlot(that.elementId, gd.data, gd.layout, that.graphConfig);
               if (that.showFullscreen) {
                 setTimeout(() => {
                   let layout = gd.layout;
@@ -183,13 +183,10 @@ export class BarGraphComponent implements OnInit {
                     that.graphConfig
                   );
                 }, 200);
-              } 
+              }
               else {
-                Plotly.newPlot(that.elementId, gd.data, gd.layout, {
-                  displaylogo: false,
-                  responsive: true,
-                  scrollZoom: true,
-                });
+                gd.layout['height'] = that.heightVal;
+                Plotly.newPlot(that.elementId, gd.data, gd.layout, that.graphConfig);
               }
             },
           },
@@ -197,7 +194,7 @@ export class BarGraphComponent implements OnInit {
             name: 'Line Chart',
             icon: plotlyicons.icons['linechart'],
             direction: 'up',
-            click: function (gd:any) {
+            click: function (gd: any) {
               gd.data[0]['type'] = 'line';
               gd.data[1]['type'] = 'line';
               gd.data[2]['type'] = 'line';
@@ -207,7 +204,7 @@ export class BarGraphComponent implements OnInit {
               gd.data[2]['textposition'] = 'top';
 
               gd.layout['height'] = that.heightVal;
-
+              Plotly.newPlot(that.elementId, gd.data, gd.layout, that.graphConfig);
               if (that.showFullscreen) {
                 setTimeout(() => {
                   let layout = gd.layout;
@@ -219,7 +216,7 @@ export class BarGraphComponent implements OnInit {
                     that.graphConfig
                   );
                 }, 200);
-              } 
+              }
               else {
                 Plotly.newPlot(
                   that.elementId,
@@ -234,7 +231,7 @@ export class BarGraphComponent implements OnInit {
           {
             name: 'Expand Fullscreen',
             icon: plotlyicons.icons['fullscreen'],
-            click: function (gd:any) {
+            click: function (gd: any) {
               that.showFullscreen = true;
               gd.layout['height'] = null;
 
@@ -256,7 +253,7 @@ export class BarGraphComponent implements OnInit {
           {
             name: 'Text Display/Hide',
             icon: plotlyicons.icons['textshowhide'],
-            click: function (gd:any) {
+            click: function (gd: any) {
               let annotations = [];
               let flag = false;
 
@@ -313,8 +310,11 @@ export class BarGraphComponent implements OnInit {
                 }
                 gd.layout['annotations'] = annotations;
               }
+              let layout = gd.layout;
+              layout['height'] = that.heightVal;
+              Plotly.newPlot(that.elementId, gd.data, gd.layout, that.graphConfig);
 
-              if (that.showFullscreen) { 
+              if (that.showFullscreen) {
                 setTimeout(() => {
                   let layout = gd.layout;
                   layout['height'] = null;
@@ -325,15 +325,11 @@ export class BarGraphComponent implements OnInit {
                     that.graphConfig
                   );
                 }, 200);
-              } 
+              }
               else {
                 let layout = gd.layout;
-                  layout['height'] = that.heightVal;
-                Plotly.newPlot(that.elementId, gd.data, gd.layout, {
-                  displaylogo: false,
-                  responsive: true,
-                  scrollZoom: true,
-                });
+                layout['height'] = that.heightVal;
+                Plotly.newPlot(that.elementId, gd.data, gd.layout, that.graphConfig);
               }
             },
           },

@@ -243,6 +243,9 @@ export class LineGraphComponent implements OnInit {
               layout['height'] = null;
               Plotly.newPlot('fullscreenGraph', gd.data, layout, day_wiseconfig);
             }, 200);
+          } else {
+            gd.layout['height'] = that.heightVal;
+            Plotly.newPlot(that.elementId, gd.data, gd.layout, day_wiseconfig);
           }
         }
       },
@@ -257,7 +260,7 @@ export class LineGraphComponent implements OnInit {
           gd.data[2]['type'] = 'line';
           gd.layout['height'] = that.heightVal;
 
-          Plotly.newPlot(that.elementId, gd.data, gd.layout);
+          Plotly.newPlot(that.elementId, gd.data, gd.layout, day_wiseconfig);
 
           if (that.showFullscreen) {
             setTimeout(() => {
@@ -265,6 +268,9 @@ export class LineGraphComponent implements OnInit {
               layout['height'] = null;
               Plotly.newPlot('fullscreenGraph', gd.data, layout, day_wiseconfig);
             }, 200);
+          } else {
+            gd.layout['height'] = that.heightVal;
+            Plotly.newPlot(that.elementId, gd.data, gd.layout, day_wiseconfig);
           }
         }
       },
@@ -322,17 +328,18 @@ export class LineGraphComponent implements OnInit {
           }
 
           // Plotly.newPlot(that.elementId, gd.data, gd.layout, { displaylogo: false, responsive: true, scrollZoom: true });
-
+          gd.layout['height'] = that.heightVal;
+          Plotly.newPlot(that.elementId, gd.data, gd.layout, day_wiseconfig);
           if (that.showFullscreen) {
             setTimeout(() => {
               let layout = gd.layout;
               layout['height'] = null;
-              Plotly.newPlot('fullscreenGraph', gd.data, layout); //, this.config
+              Plotly.newPlot('fullscreenGraph', gd.data, layout, day_wiseconfig); //, this.config
             }, 200);
           } else {
             let layout = gd.layout;
             layout['height'] = that.heightVal;
-            Plotly.newPlot(that.elementId, gd.data, gd.layout, { displaylogo: false, responsive: true, scrollZoom: true });
+            Plotly.newPlot(that.elementId, gd.data, gd.layout, day_wiseconfig);
           }
         }
       }
