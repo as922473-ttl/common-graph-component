@@ -44,7 +44,7 @@ export class LineGraphComponent implements OnInit {
     } else if (this.width >= 381 && (this.width <= 800)) {
       this.heightVal = 280;
     } else if (this.width >= 1000 && (this.width <= 1800)) {
-      this.heightVal = 250; //this.heightVal = 150;
+      this.heightVal = 280; //this.heightVal = 150;
     } else {
       this.heightVal = 200;
     }
