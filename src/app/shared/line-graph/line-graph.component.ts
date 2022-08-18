@@ -121,7 +121,7 @@ export class LineGraphComponent implements OnInit {
     day_shiftA = {
       name: 'Shift A',
       mode: 'lines',
-      stackgroup: 'one',
+      // stackgroup: 'one',
       type: 'line',
       marker: {
         color: '#c4b7e4',
@@ -136,7 +136,7 @@ export class LineGraphComponent implements OnInit {
       name: 'Shift B',
       mode: 'lines',
       type: 'line',
-      stackgroup: 'two',
+      // stackgroup: 'two',
       marker: {
         color: '#9c9ef1',
         line: {
@@ -150,7 +150,7 @@ export class LineGraphComponent implements OnInit {
       name: 'Shift C',
       mode: 'lines',
       type: 'line',
-      stackgroup: 'three',
+      // stackgroup: 'three',
       marker: {
         color: '#5b5fc4',
         line: {
@@ -223,7 +223,7 @@ export class LineGraphComponent implements OnInit {
         y: shiftC['y']
       }
     }
-    let day_wise_status = [day_shiftC, day_shiftB, day_shiftA];
+    let day_wise_status = [day_shiftA, day_shiftB, day_shiftC];
 
     let that = this;
     let modeBarButtonsToAddArray3 = [
@@ -348,12 +348,14 @@ export class LineGraphComponent implements OnInit {
     if (this.showBarGraph === 'false') {
       day_wiseconfig = {
         modeBarButtonsToAdd: [modeBarButtonsToAddArray3[2], modeBarButtonsToAddArray3[3]], //modeBarButtonsToAdd: [modeBarButtonsToAddArray3[2]],
-        displaylogo: false, responsive: true, scrollZoom: true
+        displaylogo: false, responsive: true,
+        // scrollZoom: true
       }
     } else {
       day_wiseconfig = {
         modeBarButtonsToAdd: [...modeBarButtonsToAddArray3],
-        displaylogo: false, responsive: true, scrollZoom: true
+        displaylogo: false, responsive: true,
+        // scrollZoom: true
       }
     }
 
